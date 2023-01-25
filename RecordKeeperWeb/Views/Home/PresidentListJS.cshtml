@@ -1,0 +1,39 @@
+﻿@*
+<div class="row">
+    <div class="col-md-12">
+        presidents
+    </div>
+    <table class="table" id="tblPrez">
+        </table>
+
+</div>
+
+<script>
+    const tblPrez = document.getElementById("tblPrez");
+    fetch("/president/APIPresidedntList")
+   .then(resp => resp.json())
+    .then(json_array => ShowPrezList(json_array));
+
+    function ShowPrezList(json_array){
+        json_array.forEach(p => CreatePrezRow(p))
+}
+    function CreatePrezRow(prez){
+    const r = document.createElement("tr");
+    let td = document.createElement("td");
+    td.innerHTML =  `<a href='President/President/${prez.code}'>${prez.code}</a>`;
+    r.appendChild(td);
+td = documant.createElement("td")
+td.innerHTMl = GetPeekButton(prez);
+r.appendChild(td);
+  tblPrez.appendChild(r);
+    }
+
+function GetPeekButton(prez){
+
+const e = `<button onclick='PeekPrez("${prez.code}")' class="btn btn-primary bg-primary>Peek</button>`
+}
+function PeekPrez(code)
+{
+console.log(code);
+}
+    </script>*@

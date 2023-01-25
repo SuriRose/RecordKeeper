@@ -1,0 +1,31 @@
+﻿@using RecordKeeperBizObjects;
+@model List<bizParty>
+
+@{
+    ViewData["Title"] = "Parties";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1>US Gov political Parties</h1>
+        <h2>Num of Parties = @Model.Count()</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            @foreach (bizParty p in Model)
+            {
+                <tr>
+                    <td><div style="background-color:@p.Color">&nbsp;</div></td>
+                    <td>@Html.ActionLink(p.Party, "Details", new{id = p.Party})</td>
+                    <td>Number of Presidents: </td>
+                    <td>@p.PresidentCount</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("New Party", "Edit", new {id = ""}  ,new{Class = "btn btn-primary"})
+    </div>
+</div>
